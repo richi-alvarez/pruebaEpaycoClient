@@ -1,0 +1,19 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#user controller routes
+user:
+   path: /user
+   controller: App\Controller\UserController::index
+
+registro:
+   path: /registro
+   controller: App\Controller\UserController::registro
+   methods: [POST]  
+
+
+#wallet controller routes
+whallet:
+   path: /whallet
+   controller: App\Controller\WhalletController::index
