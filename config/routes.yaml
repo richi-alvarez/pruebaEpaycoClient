@@ -26,3 +26,8 @@ recargar:
    path: /recargar
    controller: App\Controller\WhalletController::recargar
    methods: [POST]
+
+pagar:
+   path: /pagar
+   controller: App\Controller\WhalletController::pagar
+   methods: [POST]

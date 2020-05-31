@@ -135,9 +135,11 @@ class UserController extends AbstractController
               ),
             ));
             
-            $data = curl_exec($curl);
+            $result = curl_exec($curl);
             
             curl_close($curl);
+            $result_json = json_decode($result, true);
+            $data = $result_json;
 
         }
         else{
