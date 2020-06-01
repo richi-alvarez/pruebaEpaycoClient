@@ -136,7 +136,6 @@ class UserController extends AbstractController
             ));
             
             $result = curl_exec($curl);
-            
             curl_close($curl);
             $result_json = json_decode($result, true);
             $data = $result_json;
