@@ -99,11 +99,53 @@ class WhalletController extends AbstractController
           ),
         ));
         $result = curl_exec($curl);
-        // curl_close($curl);
+         curl_close($curl);
          $data = json_decode($result, true);
         
        
         
+        }else{
+            $data = [
+                'status' => 'error',
+                'code' => 400,
+                'message' => 'no se enviaron datos o datos incorrectos'
+            ];
+        }
+        return $this->resjson($data);
+    }
+
+    public function confirmar(Request $request){
+        //recojer los datos por post
+        $json = $request->get('json', null);
+        //decodificar el json
+        $params_array  = json_decode($json, true);
+        $token = $request->headers->get('Authorization', null);
+        $array = explode(' ', $token);
+        $sessionId = $request->headers->get('sessionId', null);
+        $array2 = explode(' ', $sessionId);
+        $arraymarge = array_merge($params_array, $array, $array2);
+        //comprobar y valdiar datos
+        if($token != null){
+        $json=  json_encode($arraymarge);
+        $curl = curl_init();
+            curl_setopt_array($curl, array(
+          CURLOPT_URL => "http://localhost/prueba_epayco/php/pruebaEpayco/public/confirmar",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS =>$json,
+          CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json",
+            "Accept: application/json"
+          ),
+        ));
+        $result = curl_exec($curl);
+        //curl_close($curl);
+       $data = json_decode($result, true);
         }else{
             $data = [
                 'status' => 'error',
