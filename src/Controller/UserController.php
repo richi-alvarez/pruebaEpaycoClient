@@ -63,7 +63,7 @@ class UserController extends AbstractController
         $json=  json_encode($params_array);
         $curl = curl_init();
             curl_setopt_array($curl, array(
-          CURLOPT_URL => "http://localhost/prueba_epayco/php/pruebaEpayco/public/registro",
+          CURLOPT_URL =>$this->url."/registro",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -122,7 +122,7 @@ class UserController extends AbstractController
             $json=  json_encode($params_array);
             $curl = curl_init();
             curl_setopt_array($curl, array(
-              CURLOPT_URL => "http://localhost/prueba_epayco/php/pruebaEpayco/public/login",
+              CURLOPT_URL => $this->url."/login",
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,

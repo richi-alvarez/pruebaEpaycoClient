@@ -11,6 +11,11 @@ use Symfony\Component\Validator\Constraints\Email;
 
 class WhalletController extends AbstractController
 {
+    public $url;
+
+    public function __construct(){
+        $this->url = 'http://localhost/prueba_epayco/php/pruebaEpayco/public';
+    }
     private function resjson($data){
         //Serializar datos con servicio serializer
         $json = $this->get('serializer')->serialize($data, 'json');
@@ -43,7 +48,7 @@ class WhalletController extends AbstractController
         $json=  json_encode($arraymarge);
         $curl = curl_init();
             curl_setopt_array($curl, array(
-          CURLOPT_URL => "http://localhost/prueba_epayco/php/pruebaEpayco/public/recargar",
+          CURLOPT_URL => $this->url."/recargar",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -84,7 +89,7 @@ class WhalletController extends AbstractController
         $json=  json_encode($arraymarge);
         $curl = curl_init();
             curl_setopt_array($curl, array(
-          CURLOPT_URL => "http://localhost/prueba_epayco/php/pruebaEpayco/public/pagar",
+          CURLOPT_URL => $this->url."/pagar",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -126,7 +131,7 @@ class WhalletController extends AbstractController
         $json=  json_encode($arraymarge);
         $curl = curl_init();
             curl_setopt_array($curl, array(
-          CURLOPT_URL => "http://localhost/prueba_epayco/php/pruebaEpayco/public/confirmar",
+          CURLOPT_URL =>$this->url. "/confirmar",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -166,7 +171,7 @@ class WhalletController extends AbstractController
         $json=  json_encode($arraymarge);
         $curl = curl_init();
             curl_setopt_array($curl, array(
-          CURLOPT_URL => "http://localhost/prueba_epayco/php/pruebaEpayco/public/consultar",
+          CURLOPT_URL =>$this->url."/consultar",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
