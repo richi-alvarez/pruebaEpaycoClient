@@ -85,14 +85,15 @@ class UserController extends AbstractController
                 $data = [
                     'status' => 'error',
                     'code' => 400,
-                    'message' => 'no se enviaron datos o datos incorrectos'
+                    'message' => 'no se enviaron datos o datos incorrectos 1'
                 ];
             }
         }else{
             $data = [
                 'status' => 'error',
                 'code' => 400,
-                'message' => 'no se enviaron datos o datos incorrectos'
+                'message' => 'no se enviaron datos o datos incorrectos 2',
+                'json'=>$json
             ];
         }
         return $this->resjson($data);
